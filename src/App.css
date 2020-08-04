@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.title{
+  color:red
+}
+.title:hover{
+  color:green
+}
