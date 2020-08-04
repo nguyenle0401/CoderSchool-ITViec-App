@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Moment from "react-moment";
-import { NavLink} from "react-bootstrap";
+import { NavLink , ListGroup, Card,ListGroupItem} from "react-bootstrap";
 
 
 const apiAdress = process.env.REACT_APP_SERVER_URL;
@@ -38,36 +38,29 @@ export default function Detail() {
       height="42"
     />
   </NavLink>
-  <div className = "top-100px "> 
-   <ul className="list-group">
-        <li className="list-group-item " key={job.id}>
-          <div className="media style-detail">
-            <img src={job.img} width="200px" />
-            <div className="media-body d-flex flex-column align-items-start mt-2">
-              <h3>{job.title}</h3>
-              <h5 className="mt-0 d-flex align-items-start">{job.salary}$</h5>
-              <h5>{job.city}</h5>
-              <div className="d-flex align-items-start style-login mr-2">
-                <span className="ml-auto">
-                  <Moment fromNow>{job.time}</Moment>
-                </span>
-              </div>
-              
-                <ul className="d-flex align-items-start">{job.benefits}</ul>
-                <div>
-                <ul className = "style-ul ">
-                  <li>Coffee</li>
-                  <li>Tea</li>
-                  <li>Milk</li>
-                </ul>
-                </div>
-              
-              <h4>{job.description}</h4>
-            </div>
-          </div>
-        </li>
-      </ul> 
+  <div className = "top-100px">
+  <Card style={{ width: '38rem' }}>
+  <Card.Img src={job.img} width ="50px" height = "500px" />
+  <Card.Body>
+  <Card.Title className="card-style">{job.title}</Card.Title>
+    <Card.Text>
+      {job.description}
+    </Card.Text>
+  </Card.Body>
+  <ListGroup className="list-group-flush">
+  <ListGroupItem> {job.salary}$</ListGroupItem>
+  <ListGroupItem>{job.city}</ListGroupItem>
+    <ListGroupItem><Moment fromNow>{job.time}</Moment></ListGroupItem>
+  </ListGroup>
+  <Card.Body>
+  <Card.Link> <ul>{job.benefits.map((benifit, indexBenifit) =>(
+      <li>{job.benefits}</li>
+  ) )}</ul></Card.Link>
+    
+  </Card.Body>
+</Card>
   </div>
+ 
       
     </div>
   );

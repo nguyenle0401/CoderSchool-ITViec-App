@@ -1,34 +1,33 @@
 import React, { useState, useEffect } from "react";
-import { NavLink} from "react-bootstrap";
+import { NavLink, Button } from "react-bootstrap";
 import Moment from "react-moment";
 import { useHistory, useLocation, useParams } from "react-router-dom";
 
-import jobs6 from "../db.json"
+import jobs6 from "../db.json";
 
 const QUERYSTR_PREFIX = "q";
 const apiAdress = process.env.REACT_APP_SERVER_URL;
 
-
 function useQuery() {
-    return new URLSearchParams(useLocation().search);
-  }
-  
+  return new URLSearchParams(useLocation().search);
+}
+
 export default function Jobs() {
   let [jobList, setJobList] = useState([]);
   let [searching, setSearching] = useState(null);
   let history = useHistory();
   let query = useQuery();
   let originalJobs = jobs6.jobs;
-  console.log(originalJobs)
+  console.log(originalJobs);
   let [keyword, setKeyword] = useState(query.get(QUERYSTR_PREFIX));
-//   if(keyword){
-    //   if(!searching){
-    //     history.push("/jobs")
-    //   }
-    //   else {
+  //   if(keyword){
+  //   if(!searching){
+  //     history.push("/jobs")
+  //   }
+  //   else {
 
-//   }
- 
+  //   }
+
   const getData = async () => {
     try {
       let url = `${apiAdress}/jobs`;
@@ -42,8 +41,8 @@ export default function Jobs() {
   };
 
   const inputChange = (value) => {
-      setKeyword(value);
-  }
+    setKeyword(value);
+  };
 
   const handleSearch = (e) => {
     setSearching(true);
@@ -53,11 +52,11 @@ export default function Jobs() {
       history.push(`/jobs/?${QUERYSTR_PREFIX}=${encodeURIComponent(keyword)}`);
     }
     if (keyword) {
-      filteredJobs = originalJobs.filter(job =>
+      filteredJobs = originalJobs.filter((job) =>
         job.title.toLowerCase().includes(keyword.toLowerCase())
       );
     }
-    console.log(filteredJobs)
+    console.log(filteredJobs);
     setJobList(filteredJobs);
     setTimeout(() => setSearching(false), 5);
   };
@@ -69,8 +68,6 @@ export default function Jobs() {
   useEffect(() => {
     getData();
   }, []);
-
-
 
   if (jobList.length === 0) {
     return <h1>Loading</h1>;
@@ -116,17 +113,28 @@ export default function Jobs() {
               </NavLink>
             </li>
           </ul>
-          <NavLink className="btn btn-outline-info my-2 my-sm-0" to="/login">
-            Sign In
+
+          <input
+            className="ml-2 mr-1 m"
+            type="text"
+            onChange={(e) => inputChange(e.target.value)}
+          ></input>
+          <Button
+            className="mr-1 m"
+            variant="danger"
+            onClick={(e) => handleSearch(e)}
+          >
+            Search
+          </Button>
+          <NavLink className="btn btn-outline-danger my-2 my-sm-0" to="/login">
+            Sign Out
           </NavLink>
           <NavLink
-            className="btn btn-outline-info my-2 my-sm-0 ml-3"
+            className="btn btn-outline-danger my-2 my-sm-0 ml-3"
             to="/register"
           >
             Sign Up
           </NavLink>
-          <input type = "text" onChange= {(e)=> inputChange(e.target.value)}></input> 
-          <button onClick = {(e)=> handleSearch(e)}>Search</button>
         </div>
       </nav>
 
@@ -135,21 +143,22 @@ export default function Jobs() {
           return (
             <li className="list-group-item style-card" key={job.id}>
               <div className="media">
-                <img src={job.img} width="200px"/>
+                <img src={job.img} width="200px" />
                 <div className="media-body d-flex flex-column align-items-start justify-content-around mt-2">
-                  <h3 className="title" onClick={() => getDetail(job.id)}>{job.title}</h3>
-                  {job.isHotjob === true?
-                  <h3>Hot Job</h3> : ""}
-                  <h5 className="mt-0 d-flex align-items-start">
-                    {job.salary}
+                  <h3 className="title" onClick={() => getDetail(job.id)}>
+                    {job.title}
+                  </h3>
+                  {job.isHotjob === true ? <Button variant = "warning" className = "ml-auto">Hot Job</Button> : ""}
+                  <h5 className="d-flex align-items-start text-success ml-5">
+                    {job.salary}$
                   </h5>
                   <span>
-                    <ul className="d-flex align-items-start">
-                      {job.benefits}{" "}
-                    </ul>
+                    <h6 className="d-flex align-items-start ml-5">
+                      {job.city}
+                    </h6>
 
-                    <div className="d-flex align-items-start style-login mr-2">
-                      <span className="ml-auto">
+                    <div className="d-flex align-items-start style-login  ml-5">
+                      <span className="ml-auto text-primary ">
                         <Moment fromNow>{job.time}</Moment>
                       </span>
                     </div>

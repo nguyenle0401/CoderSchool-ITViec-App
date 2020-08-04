@@ -81,9 +81,19 @@
   height: 100%;
 }
 .style-detail{
-  border: 1px solid red;
+  border: 5px solid red;
   width: 50%;
-  justify-content: center;
-  display: flex;
-  align-items: center;
+  border-radius: 12px;
+}
+.login{
+  background-image: url("https://remote.co/wp-content/uploads/2018/05/Remote-Work-More-Than-a-Perk-for-Pros-with-Chronic-Conditions.jpg");
+  background-size: 100%;
+}
+.style-login-text{
+  font-size: 130px;
+  font-weight: bolder;
+  color:black;
+}
+.text-muted{
+  font-size: 20px;
 }

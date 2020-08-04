@@ -24,9 +24,9 @@ export default function Login() {
       height="42"
     />
   </NavLink>
-  <div className ="top-100px">
+  <div className ="top-100px login">
       <div>
-      <h1>Login Page</h1>
+      <h1 className = "style-login-text">Login Page</h1>
       <Form>
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
