@@ -43,3 +43,47 @@
 .title:hover{
   color:green
 }
+.style-card{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left:0;
+  top:100px;
+  flex-direction: column;
+  width:100%;
+}
+.style-nav{
+  width: 100% !important;
+  z-index: 10;
+  min-height: 100px !important;
+  max-height: 100px !important;
+}
+.style-color-nav{
+  color:white !important;
+}
+.size-card{
+  width:1000px !important;
+  height: 500px !important;
+}
+.style-ul{
+  list-style-type: disc;
+  list-style-position: initial;
+  /* list-style-position: inside; */
+}
+.top-100px{
+  width: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  height: 100%;
+}
+.style-detail{
+  border: 1px solid red;
+  width: 50%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}

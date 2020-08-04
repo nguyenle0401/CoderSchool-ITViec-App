@@ -5,7 +5,7 @@ import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
 import Jobs from "./pages/Jobs";
 import Detail from "./pages/Detail";
-import { Switch, Route, Redirect, Link } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 
 function App() {
@@ -18,24 +18,26 @@ function App() {
         return <Redirect to ="/login" />
       }
   }
+  const FourOhFourPage = () => {
+    return (
+      <div>
+        <h1>404 Not Found</h1>
+      </div>
+    );
+  };
 
   return (
     <div className="App">
-      <Link to="/jobs">Click here to go to Jobs</Link>
+      {/* <Link to="/jobs">Click here to go to Jobs</Link> */}
       <Switch>
-        <Route exact path="/" component={Homepage} />
+        <Route exact path="/" component={Login} />
         <Route exact path="/login" component={Login}/>
         <Route exact path="/jobs" component={Jobs} />
-
-        {/* <Route 
-        exact 
-        path="/jobs/:id" 
-        render = {(props) => <Detail jobtitle = "haha" props = {props}/>}/> */}
-
         <ProtectedRoute
           path="/jobs/:id" 
           render = {(props) => <Detail jobtitle = "haha" {...props}/>}
         />
+       <Route path="*" component={FourOhFourPage} />
 
       </Switch>
     </div>
