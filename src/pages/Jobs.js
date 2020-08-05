@@ -141,14 +141,17 @@ export default function Jobs() {
                 <div className="media-body d-flex flex-column align-items-start justify-content-around mt-2">
                   <h3 className="title" onClick={() => getDetail(job.id)}>
                     {job.title}
-                  </h3>
-                  {job.isHotjob === true ? (
-                    <Button variant="warning" className="ml-auto">
+                    <span className = "ml-3">
+                    {job.isHotjob === true ? (
+                    <Button variant="warning" className="">
                       Hot Job
                     </Button>
                   ) : (
                     ""
                   )}
+                    </span>
+                  </h3>
+                  
                   <h5 className="d-flex align-items-start text-success ml-5">
                     {job.salary}$
                   </h5>
