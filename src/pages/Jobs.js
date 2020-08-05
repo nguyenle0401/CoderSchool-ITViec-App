@@ -169,6 +169,7 @@ export default function Jobs() {
                     </h6>
                     <div className="content-footer d-flex align-items-start">
                       {job.tags.map((label) => (
+                          <div>
                         <span
                           className="badge badge-secondary mr-2"
                           color={label.color}
@@ -176,14 +177,16 @@ export default function Jobs() {
                         >
                           {label}
                         </span>
+                        </div>
                       ))}
-                    </div>
-
-                    <div className="d-flex align-items-start style-login  ml-5">
+                      <div className="d-flex align-items-start style-login  ml-5">
                       <span className="ml-auto text-primary ">
                         <Moment fromNow>{job.time}</Moment>
                       </span>
+                      </div>
                     </div>
+
+                    
                   </span>
                 </div>
               </div>
