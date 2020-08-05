@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, Button } from "react-bootstrap";
+import { NavLink, Button, Form } from "react-bootstrap";
 import Moment from "react-moment";
-import { useHistory, useLocation, useParams } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import CircleLoader from "react-spinners/CircleLoader";
-import jobs6 from "../db.json";
 
-
-const QUERYSTR_PREFIX = "q";
 const apiAdress = process.env.REACT_APP_SERVER_URL;
 
 function useQuery() {
@@ -14,20 +11,11 @@ function useQuery() {
 }
 
 export default function Jobs() {
-  let [jobList, setJobList] = useState([]);
-  let [searching, setSearching] = useState(null);
-  let history = useHistory();
   let query = useQuery();
-  let originalJobs = jobs6.jobs;
-  console.log(originalJobs);
-  let [keyword, setKeyword] = useState(query.get(QUERYSTR_PREFIX));
-  //   if(keyword){
-  //   if(!searching){
-  //     history.push("/jobs")
-  //   }
-  //   else {
-
-  //   }
+  let [jobList, setJobList] = useState([]);
+  let [keyword, setKeyword] = useState(query.get("q"));
+  let [originalList, setOriginalList] = useState([]);
+  let history = useHistory();
 
   const getData = async () => {
     try {
@@ -36,30 +24,28 @@ export default function Jobs() {
       let respone = await fetch(url);
       let result = await respone.json();
       setJobList(result);
+      setOriginalList(result)
     } catch (err) {
       console.log("err", err.message);
     }
   };
 
-  const inputChange = (value) => {
-    setKeyword(value);
-  };
-
-  const handleSearch = (e) => {
-    setSearching(true);
-    let filteredJobs = originalJobs;
+  const searchByKeyword = (e) => {
+    let filteredList = originalList;
     if (e) {
       e.preventDefault();
-      history.push(`/jobs/?${QUERYSTR_PREFIX}=${encodeURIComponent(keyword)}`);
+      console.log("keyword?", keyword);
+      if (keyword !== '') history.push(`/jobs?q=${keyword}`)
+      else history.push('/jobs')
     }
+
     if (keyword) {
-      filteredJobs = originalJobs.filter((job) =>
+      filteredList = originalList.filter((job) =>
         job.title.toLowerCase().includes(keyword.toLowerCase())
       );
     }
-    console.log(filteredJobs);
-    setJobList(filteredJobs);
-    setTimeout(() => setSearching(false), 5);
+
+    setJobList(filteredList);
   };
 
   const getDetail = (id) => {
@@ -69,17 +55,27 @@ export default function Jobs() {
   useEffect(() => {
     getData();
   }, []);
+
+  useEffect(() => {
+    searchByKeyword();
+  }, [originalList]);
+
+
+
   const [loading, setLoading] = useState(false);
-  
+
   if (jobList.length === 0) {
-    return    <div className="sweet-loading style-loading">
-    <CircleLoader
-    //   css={overide}
-      size={150}
-      color={"green"}
-      loading={loading}
-    />
-  </div>
+    return (
+      <div className="sweet-loading style-loading">
+        No Results.
+        <CircleLoader
+          //   css={overide}
+          size={150}
+          color={"green"}
+          loading={loading}
+        />
+      </div>
+    );
   }
   return (
     <div>
@@ -123,18 +119,14 @@ export default function Jobs() {
             </li>
           </ul>
 
-          <input
-            className="ml-2 mr-1 m"
-            type="text"
-            onChange={(e) => inputChange(e.target.value)}
-          ></input>
-          <Button
-            className="mr-1 m"
-            variant="danger"
-            onClick={(e) => handleSearch(e)}
-          >
-            Search
-          </Button>
+          <Form onSubmit={(e) => searchByKeyword(e)}>
+            <input
+              type="text"
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
+            />
+            <button type="submit">Search</button>
+          </Form>
           <NavLink className="btn btn-outline-danger my-2 my-sm-0" to="/login">
             Sign Out
           </NavLink>
@@ -166,8 +158,7 @@ export default function Jobs() {
                       {job.city}
                     </h6>
                     <h6 className="d-flex align-items-start ml-5">Benefits:</h6>
-                    <h6>
-                      {" "}
+                    <h6 className = "hihi">
                       <ul>
                         {job.benefits.map((benifit, indexBenifit) => (
                           <li>{benifit}</li>
@@ -175,16 +166,16 @@ export default function Jobs() {
                       </ul>
                     </h6>
                     <div className="content-footer d-flex align-items-start">
-                    {job.tags.map((label) => (
-                      <span
-                        className="badge badge-secondary mr-2"
-                        color={label.color}
-                        key={label.id}
-                      >
-                        {label}
-                      </span>
-                    ))}
-                  </div>
+                      {job.tags.map((label) => (
+                        <span
+                          className="badge badge-secondary mr-2"
+                          color={label.color}
+                          key={label.id}
+                        >
+                          {label}
+                        </span>
+                      ))}
+                    </div>
 
                     <div className="d-flex align-items-start style-login  ml-5">
                       <span className="ml-auto text-primary ">
