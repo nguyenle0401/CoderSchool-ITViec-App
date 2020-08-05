@@ -5,6 +5,7 @@ import { useHistory, useLocation, useParams } from "react-router-dom";
 import CircleLoader from "react-spinners/CircleLoader";
 import jobs6 from "../db.json";
 
+
 const QUERYSTR_PREFIX = "q";
 const apiAdress = process.env.REACT_APP_SERVER_URL;
 

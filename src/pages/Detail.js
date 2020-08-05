@@ -62,9 +62,10 @@ export default function Detail() {
   <Card.Body>
       <div>
       <div>
-      <ul>{job.benefits.map((benifit, indexBenifit) =>(
-      <li className = "hihi">{benifit}</li>
-  ) )}</ul>
+      <h6 className = "hihi"><strong>Bennefits:</strong></h6>
+      <div>{job.benefits.map((benifit, indexBenifit) =>(
+      <ListGroupItem className = "hihi">{benifit}</ListGroupItem>
+  ) )}</div>
       </div>
       </div>
   </Card.Body>
