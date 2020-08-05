@@ -67,9 +67,8 @@ export default function Jobs() {
   if (jobList.length === 0) {
     return (
       <div className="sweet-loading style-loading">
-        No Results.
         <CircleLoader
-          //   css={overide}
+        //   css={overide}
           size={150}
           color={"green"}
           loading={loading}
@@ -138,7 +137,7 @@ export default function Jobs() {
           return (
             <li className="list-group-item style-card" key={job.id}>
               <div className="media">
-                <img src={job.img} width="200px" />
+                <img src={job.img} width="100px" />
                 <div className="media-body d-flex flex-column align-items-start justify-content-around mt-2">
                   <h3 className="title" onClick={() => getDetail(job.id)}>
                     {job.title}
