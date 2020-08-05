@@ -173,6 +173,17 @@ export default function Jobs() {
                         ))}
                       </ul>
                     </h6>
+                    <div className="content-footer d-flex align-items-start">
+                    {job.tags.map((label) => (
+                      <span
+                        className="badge badge-secondary mr-2"
+                        color={label.color}
+                        key={label.id}
+                      >
+                        {label}
+                      </span>
+                    ))}
+                  </div>
 
                     <div className="d-flex align-items-start style-login  ml-5">
                       <span className="ml-auto text-primary ">
