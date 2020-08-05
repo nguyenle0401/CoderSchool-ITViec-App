@@ -137,12 +137,6 @@ export default function Jobs() {
           <NavLink className="btn btn-outline-danger my-2 my-sm-0" to="/login">
             Sign Out
           </NavLink>
-          <NavLink
-            className="btn btn-outline-danger my-2 my-sm-0 ml-3"
-            to="/register"
-          >
-            Sign Up
-          </NavLink>
         </div>
       </nav>
 
