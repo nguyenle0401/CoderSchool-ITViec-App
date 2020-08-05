@@ -138,7 +138,7 @@ export default function Jobs() {
             <li className="list-group-item style-card" key={job.id}>
               <div className="media">
                 <img src={job.img} width="100px" />
-                <div className="media-body d-flex flex-column align-items-start justify-content-around mt-2">
+                <div className="media-body mt-2 style-jobtitle">
                   <h3 className="title" onClick={() => getDetail(job.id)}>
                     {job.title}
                     <span className = "ml-3">
