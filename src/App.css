@@ -97,3 +97,7 @@
 .text-muted{
   font-size: 20px;
 }
+.hihi{
+  list-style-type: disc;
+ list-style-position: outside !important;
+}

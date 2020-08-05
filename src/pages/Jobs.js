@@ -148,13 +148,28 @@ export default function Jobs() {
                   <h3 className="title" onClick={() => getDetail(job.id)}>
                     {job.title}
                   </h3>
-                  {job.isHotjob === true ? <Button variant = "warning" className = "ml-auto">Hot Job</Button> : ""}
+                  {job.isHotjob === true ? (
+                    <Button variant="warning" className="ml-auto">
+                      Hot Job
+                    </Button>
+                  ) : (
+                    ""
+                  )}
                   <h5 className="d-flex align-items-start text-success ml-5">
                     {job.salary}$
                   </h5>
                   <span>
-                    <h6 className="d-flex align-items-start ml-5">
+                    <h6 className="d-flex align-items-start ml-5 text-muted">
                       {job.city}
+                    </h6>
+                    <h6 className="d-flex align-items-start ml-5">Benefits:</h6>
+                    <h6>
+                      {" "}
+                      <ul>
+                        {job.benefits.map((benifit, indexBenifit) => (
+                          <li>{benifit}</li>
+                        ))}
+                      </ul>
                     </h6>
 
                     <div className="d-flex align-items-start style-login  ml-5">
