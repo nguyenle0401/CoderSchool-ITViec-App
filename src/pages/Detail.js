@@ -53,19 +53,15 @@ export default function Detail() {
     <ListGroupItem><Moment fromNow>{job.time}</Moment></ListGroupItem>
   </ListGroup>
   <Card.Body>
-     
-      
- 
-    
-  </Card.Body>
-</Card>
-<div>
+      <div>
       <div>
       <ul>{job.benefits.map((benifit, indexBenifit) =>(
       <li className = "hihi">{benifit}</li>
   ) )}</ul>
       </div>
       </div>
+  </Card.Body>
+</Card>
   </div>
  
       
