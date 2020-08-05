@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, Button } from "react-bootstrap";
 import Moment from "react-moment";
 import { useHistory, useLocation, useParams } from "react-router-dom";
-
+import CircleLoader from "react-spinners/CircleLoader";
 import jobs6 from "../db.json";
 
 const QUERYSTR_PREFIX = "q";
@@ -68,9 +68,17 @@ export default function Jobs() {
   useEffect(() => {
     getData();
   }, []);
-
+  const [loading, setLoading] = useState(false);
+  
   if (jobList.length === 0) {
-    return <h1>Loading</h1>;
+    return    <div className="sweet-loading style-loading">
+    <CircleLoader
+    //   css={overide}
+      size={150}
+      color={"green"}
+      loading={loading}
+    />
+  </div>
   }
   return (
     <div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Moment from "react-moment";
 import { NavLink , ListGroup, Card,ListGroupItem} from "react-bootstrap";
-
+import CircleLoader from "react-spinners/CircleLoader";
 
 const apiAdress = process.env.REACT_APP_SERVER_URL;
 export default function Detail() {
@@ -20,9 +20,16 @@ export default function Detail() {
   useEffect(() => {
     getDetailData();
   }, []);
-
+  const [loading, setLoading] = useState(false);
   if (job === null) {
-    return <div>loading</div>;
+    return <div className="sweet-loading style-loading">
+    <CircleLoader
+    //   css={overide}
+      size={150}
+      color={"green"}
+      loading={loading}
+    />
+  </div>
   }
 
   
