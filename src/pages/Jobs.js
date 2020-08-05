@@ -124,7 +124,7 @@ export default function Jobs() {
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}
             />
-            <button type="submit">Search</button>
+            <Button variant = "danger" type="submit" className = "mr-1">Search</Button>
           </Form>
           <NavLink className="btn btn-outline-danger my-2 my-sm-0" to="/login">
             Sign Out
