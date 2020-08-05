@@ -24,7 +24,6 @@ export default function Login() {
       height="42"
     />
   </NavLink>
-  
   <div className ="top-100px login">
       <div>
       <h1 className = "style-login-text">Login</h1>

@@ -45,7 +45,7 @@ export default function Detail() {
       height="42"
     />
   </NavLink>
-  <div className = "top-100px">
+  <div className = "top1-100px">
   <Card style={{ width: '38rem' }}>
   <Card.Img src={job.img} width ="50px" height = "500px" />
   <Card.Body>
