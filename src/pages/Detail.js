@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Moment from "react-moment";
-import { NavLink , ListGroup, Card, ListGroupItem} from "react-bootstrap";
+import { ListGroup, Card, ListGroupItem} from "react-bootstrap";
 import CircleLoader from "react-spinners/CircleLoader";
+
 
 const apiAdress = process.env.REACT_APP_SERVER_URL;
 export default function Detail() {
@@ -31,23 +32,12 @@ export default function Detail() {
     />
   </div>
   }
-
-  
-
   return (
     <div>
-  <NavLink className="navbar navbar-expand-lg navbar-light bg-dark position-fixed style-nav" to="/#">
-    <img
-      class="logo-itviec"
-      alt="itviec"
-      src="https://itviec.com/assets/logo-itviec-65afac80e92140efa459545bc1c042ff4275f8f197535f147ed7614c2000ab0f.png"
-      width="108"
-      height="42"
-    />
-  </NavLink>
+      
   <div className = "top1-100px">
   <Card style={{ width: '38rem' }}>
-  <Card.Img src={job.img} width ="50px" height = "500px" />
+  {/* <Card.Img src={job.img} width ="50px" height = "500px" /> */}
   <Card.Body>
   <Card.Title className="card-style">{job.title}</Card.Title>
     <Card.Text>

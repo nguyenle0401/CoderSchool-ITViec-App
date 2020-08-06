@@ -1,16 +1,19 @@
 import React, { useState } from "react";
-import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Homepage from "./pages/Homepage";
+import "./App.css";
 import Login from "./pages/Login";
 import Jobs from "./pages/Jobs";
 import Detail from "./pages/Detail";
+import { useSelector } from "react-redux"
 import { Switch, Route, Redirect } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import { useHistory } from "react-router-dom";
 
 function App() {
-  let [user, setUser] = useState({ isAuthenticated: true });
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  let history = useHistory();
   const ProtectedRoute = (props) => {
-    if (user.isAuthenticated === true) {
+    if (isAuthenticated === true) {
       return <Route {...props} />;
     } else {
       console.log("im here");
@@ -27,14 +30,16 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar/>
+      {isAuthenticated ? history.push("./jobs") :  history.push("./login")  } 
       <Switch>
-        <Route exact path="/" component={Login} />
+        <Route exact path="/" component={Jobs} />
         <Route exact path="/login" component={Login} />
-        <ProtectedRoute
+         <ProtectedRoute
           path="/jobs/:id"
           render={(props) => <Detail jobtitle="haha" {...props} />}
-        />
-        <Route path="/jobs" component={Jobs} />
+        /> 
+         <Route path="/jobs" component={Jobs} />
         <Route path="*" component={FourOhFourPage} />
       </Switch>
     </div>

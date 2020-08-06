@@ -11,6 +11,7 @@ function loginFail(message){
             console.log("user",user)
             if(!user.email || !user.password){
                 dispatch(loginFail("fail roi"))
+                alert("Please enter all fields")
                 return;
             }else{
                  dispatch(login(user))

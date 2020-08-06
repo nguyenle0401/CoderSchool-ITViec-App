@@ -1,6 +1,6 @@
 let initalState = {
   user: { email: " ", password: " ", isAuthenticated: false },
-  eror:""
+  eror:"",
 };
 
 function reducer(state = initalState, action) {
@@ -14,8 +14,12 @@ function reducer(state = initalState, action) {
       break;
     case "LOGIN_FAIL":{
         state.error = action.payload;
+        break;
     }
-
+    case "SIGN_OUT":
+        state.user.isAuthenticated = false;
+        state.user.email = "" ;
+        state.user.password = "" ;
   }
   console.log("state", state);
   return { ...state };
