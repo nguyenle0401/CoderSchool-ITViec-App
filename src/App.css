@@ -42,7 +42,7 @@
 .title:hover{
   color:green
 }
-.style-card{
+/* .style-card{
   position: relative;
   display: flex;
   justify-content: center;
@@ -51,7 +51,7 @@
   top:100px;
   flex-direction: column;
   width:100%;
-}
+} */
 .style-nav{
   width: 100% !important;
   z-index: 10;
@@ -120,12 +120,14 @@ justify-content: space-around;
   padding-top: 150px;
 }
 .style-img{
-border: 2px solid rgb(236, 214, 214);
-border-radius: 25px;
-
+border: 2px solid rgb(230, 228, 228);
+border-radius: 100px;
+width:200px;
+height: 200px;
 }
 .style-search{
   top:400px;
+
 }
 .style-login{
   top: 400px;
@@ -195,6 +197,35 @@ border-radius: 25px;
   justify-content: center;
   align-items: center;
   width:100%;
-
-
+}
+.style-be{
+  line-height: 2.5;
+}
+.card-style-title{
+  font-size: 30px;
+  font-weight: bolder;
+  text-align: center;
+  color: red;
+}
+.card-style-disc{
+  text-align: justify;
+}
+.bgr-detail{
+  background-image: url(https://jobsgo.vn/blog/wp-content/uploads/2019/08/67176526_23843562532780022_7959494209684111360_n.png);
+  background-size: 110%;
+}
+.style-tbn-s{
+  text-align: center;
+}
+.style-input{
+  height: 40px;
+  width: 500px;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+.style-card{
+border: 1px solid tomato;
+}
+.style-lg{
+  text-align: center;
 }

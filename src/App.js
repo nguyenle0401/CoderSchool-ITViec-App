@@ -35,11 +35,12 @@ function App() {
       <Switch>
         <Route exact path="/" component={Jobs} />
         <Route exact path="/login" component={Login} />
+        <Route path="/jobs" component={Jobs} />
          <ProtectedRoute
           path="/jobs/:id"
           render={(props) => <Detail jobtitle="haha" {...props} />}
         /> 
-         <Route path="/jobs" component={Jobs} />
+         
         <Route path="*" component={FourOhFourPage} />
       </Switch>
     </div>

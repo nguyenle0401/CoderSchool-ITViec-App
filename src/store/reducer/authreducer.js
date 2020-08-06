@@ -20,6 +20,8 @@ function reducer(state = initalState, action) {
         state.user.isAuthenticated = false;
         state.user.email = "" ;
         state.user.password = "" ;
+        state.error = "";
+        alert("Sign-out completely");
   }
   console.log("state", state);
   return { ...state };

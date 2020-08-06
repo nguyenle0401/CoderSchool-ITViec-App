@@ -29,7 +29,7 @@ export default function Login() {
     <div>
   <div className ="top-100px">
       <div>
-      <h1 className = "style-login-text">Login</h1>
+      <h1 className = "style-login-text style-lg">Login</h1>
       <Form >
         <Form.Group controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -45,14 +45,17 @@ export default function Login() {
         <Form.Group controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
+        <div className="style-lg">
         <Button
-         onClick = {(e) => login(e)}
+          className="submit style-lg"
+          onClick = {(e) => login(e)}
           variant="danger"
           type="button"
-          className="submit"
         >
           Submit
         </Button>
+        </div>
+        
       </Form>
       </div>
 
