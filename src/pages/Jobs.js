@@ -94,7 +94,7 @@ export default function Jobs() {
           return (
             <li className="list-group-item" key={job.id}>
               <div className="media">
-                <img src={job.img} width="100px" class = "style-img" />
+                <img src={job.img} width="100px" className = " style-img m-5" />
                 <div className="media-body mt-2">
                   <h3 className="title" onClick={() => getDetail(job.id)}>
                     {job.title}

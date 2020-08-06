@@ -120,9 +120,9 @@ justify-content: space-around;
   padding-top: 150px;
 }
 .style-img{
-  margin-right: 100px;
-  padding-top: 30px;
-  
+border: 2px solid rgb(236, 214, 214);
+border-radius: 25px;
+
 }
 .style-search{
   top:400px;
