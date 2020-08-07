@@ -15,6 +15,7 @@ function loginFail(message){
                 return;
             }else{
                  dispatch(login(user))
+                 alert("Login successfully")
             }
         }catch(error){
 
