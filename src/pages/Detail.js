@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Moment from "react-moment";
-import { ListGroup, Card, ListGroupItem } from "react-bootstrap";
+import { ListGroup, Card, ListGroupItem, Button } from "react-bootstrap";
 import CircleLoader from "react-spinners/CircleLoader";
 
 const apiAdress = process.env.REACT_APP_SERVER_URL;
@@ -60,6 +60,8 @@ export default function Detail() {
                     <ListGroupItem className="hihi">{benifit}</ListGroupItem>
                   ))}
                 </div>
+            <Button variant = "danger" className ="btn-apply mt-3">Apply</Button>
+                
               </div>
             </div>
           </Card.Body>
