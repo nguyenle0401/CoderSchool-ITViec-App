@@ -13,6 +13,7 @@ function App() {
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
   let history = useHistory();
   const ProtectedRoute = (props) => {
+
     if (isAuthenticated === true) {
       return <Route {...props} />;
     } else {
@@ -31,16 +32,14 @@ function App() {
   return (
     <div className="App">
       <Navbar/>
-      {isAuthenticated ? history.push("./jobs") :  history.push("./login")  } 
       <Switch>
         <Route exact path="/" component={Jobs} />
         <Route exact path="/login" component={Login} />
-        <Route path="/jobs" component={Jobs} />
          <ProtectedRoute
           path="/jobs/:id"
           render={(props) => <Detail jobtitle="haha" {...props} />}
         /> 
-         
+            <Route path="/jobs" component={Jobs} />
         <Route path="*" component={FourOhFourPage} />
       </Switch>
     </div>

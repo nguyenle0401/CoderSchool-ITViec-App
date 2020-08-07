@@ -25,6 +25,7 @@ export default function Login() {
   if (isAuthenticated) {
     history.push('/jobs')
   }
+
   return (
     <div>
   <div className ="top-100px">

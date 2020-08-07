@@ -50,14 +50,14 @@ export default function Jobs() {
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
 
   const getDetail = (id) => {
+    console.log("hoho",getDetail)
     if(isAuthenticated){
       history.push(`/jobs/${id}`);
     }else{
       history.push(`/login`)
-      
     }
-    
   };
+  
 
   useEffect(() => {
     getData();
